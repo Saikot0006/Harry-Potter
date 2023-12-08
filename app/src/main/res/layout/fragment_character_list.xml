@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.harrypotter.ui.viewModel.CharacterViewModel" />
+            type="com.example.harrypotter.ui.characterList.CharacterViewModel" />
 
     </data>
 

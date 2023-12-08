@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import javax.inject.Named
 import javax.inject.Singleton
@@ -24,6 +25,7 @@ object AppModule {
     fun provideRetrofitInstance(
         @Named("apiHarryPorter")
         baseUrl : String,
-        okHttpClient : OkHttpClient
-    ) : ApiServices = retrofitInstance(baseUrl,okHttpClient).create(ApiServices::class.java)
+        okHttpClient : OkHttpClient,
+        cache: Cache
+    ) : ApiServices = retrofitInstance(baseUrl,okHttpClient, cache).create(ApiServices::class.java)
 }

@@ -1,4 +1,4 @@
-package com.example.harrypotter.ui.viewModel
+package com.example.harrypotter.ui.characterList
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -25,8 +25,8 @@ class CharacterViewModel @Inject constructor(private val repository: CharacterRe
     fun getCharacters(){
         try {
             viewModelScope.launch(Dispatchers.IO) {
-                val response = repository.getCharacters()
                 try {
+                    val response = repository.getCharacters()
                     withContext(Dispatchers.Main){
                         _isLoading.value = false
                         if(response.isSuccessful){

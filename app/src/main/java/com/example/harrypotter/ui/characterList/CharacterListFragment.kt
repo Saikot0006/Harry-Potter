@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.harrypotter.R
 import com.example.harrypotter.databinding.FragmentCharacterListBinding
-import com.example.harrypotter.ui.viewModel.CharacterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

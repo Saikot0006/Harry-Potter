@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="item"
+            type="com.example.harrypotter.models.CharactersListResponse.CharactersListResponseItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/characterItemIV" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_character_item"
+            app:layout_constraintTop_toTopOf="@+id/characterItemNameTV"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/characterItemIV"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:imageUrl="@{item.image.toString()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/characterItemNameTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@{item.name}"
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="8dp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintStart_toEndOf="@+id/characterItemIV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/characterItemIV" />
+
+        <TextView
+            android:id="@+id/characterItemActorNameTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{item.actor}"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"
+            android:textStyle="bold"
+            android:textColor="@color/ColorTextOther"
+            app:layout_constraintStart_toStartOf="@+id/characterItemNameTV"
+            app:layout_constraintEnd_toEndOf="@+id/characterItemNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/characterItemNameTV" />
+
+        <TextView
+            android:id="@+id/characterItemHouseNameTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{item.house}"
+            android:textColor="@color/ColorThemeExtra"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/characterItemNameTV"
+            app:layout_constraintStart_toStartOf="@+id/characterItemNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/characterItemActorNameTV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

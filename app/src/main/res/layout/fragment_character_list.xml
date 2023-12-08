@@ -4,7 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
 
+        <variable
+            name="viewModel"
+            type="com.example.harrypotter.ui.viewModel.CharacterViewModel" />
 
     </data>
 
@@ -15,9 +19,13 @@
         tools:context=".ui.characterList.CharacterListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/characterRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+            tools:itemCount="4"
+            android:visibility="@{viewModel.characterList.size() != 0 &amp;&amp; viewModel.isLoading() == false ? View.VISIBLE : View.GONE}"
+            tools:listitem="@layout/item_character"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -26,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
+            android:visibility="@{viewModel.characterList.size() == 0 &amp;&amp; viewModel.isLoading() == false ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +46,7 @@
                 layout="@layout/layout_no_data_found"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/refreshBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/refresh"
@@ -50,7 +59,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
